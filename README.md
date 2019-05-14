@@ -24,7 +24,7 @@ Accept: application/json
 
 **Response**
 ```
-200 OK
+HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -47,7 +47,7 @@ Content-Type: application/json
 
 **Response**
 ```
-200 OK
+HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -77,7 +77,7 @@ Content-Type: application/json
 
 **Response**
 ```
-200 OK
+HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -101,7 +101,7 @@ Content-Type: application/json
 
 **Response**
 ```
-200 OK
+HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
