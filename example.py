@@ -2,7 +2,7 @@
 import requests
 
 port = 5000
-url = "http://127.0.0.1:{}".format(port)
+url = "http://127.0.0.1:{}/board".format(port)
 
 
 def move(board_url, move):

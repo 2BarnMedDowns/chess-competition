@@ -12,18 +12,18 @@ from werkzeug.exceptions import UnsupportedMediaType
 from werkzeug.exceptions import InternalServerError
 
 app = flask.Flask(__name__)
-handlers = {}
+api_handlers = {}
 board = None
 
 
-def handler(url, method):
+def api_handler(url, method):
     """Convenience decorator for flask routes"""
     method = method.upper()
 
     if not method in ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']:
         raise Exception("Unknown method: ``{}''".format(method))
 
-    def decorate(handler_function):
+    def decorate(handler_func):
         def endpoint(*args, **kwargs):
             # Get flask's request context
             from flask import request
@@ -44,7 +44,7 @@ def handler(url, method):
 
             headers = {}
             try:
-                resp_data = handler_function(req_data, headers, *args, **kwargs)
+                resp_data = handler_func(req_data, headers, *args, **kwargs)
 
             except HTTPException as e:
                 app.logger.debug(tb.format_exc(e))
@@ -69,8 +69,8 @@ def handler(url, method):
             return response
 
 
-        if handler_function:
-            ep = handler_function.__name__ + "_" + method
+        if handler_func:
+            ep = handler_func.__name__ + "_" + method
             app.add_url_rule(url, ep, endpoint, methods=[method])
 
 
@@ -108,12 +108,12 @@ def reset_game(**board_data):
         raise BadRequest("Invalid FEN string")
 
 
-@handler('/', 'GET')
+@api_handler('/board', 'GET')
 def list_games(request_data, request_headers):
     return board_info()
 
 
-@handler('/', 'PUT')
+@api_handler('/board', 'PUT')
 def move_piece(request_data, headers):
     global board
     if 'reset' in request_data:

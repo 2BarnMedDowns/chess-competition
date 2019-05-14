@@ -18,7 +18,7 @@ API
 ### Get board
 **Request**
 ```
-GET / HTTP/1.1
+GET /board HTTP/1.1
 Accept: application/json
 ```
 
@@ -38,7 +38,7 @@ Content-Type: application/json
 ### Reset board
 **Request**
 ```
-PUT / HTTP/1.1
+PUT /board HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
@@ -61,7 +61,7 @@ Content-Type: application/json
 ### Reset board with different parameters
 **Request**
 ```
-PUT / HTTP/1.1
+PUT /board HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
@@ -92,7 +92,7 @@ Content-Type: application/json
 ### Make move
 **Request**
 ```
-PUT / HTTP/1.1
+PUT /board HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
